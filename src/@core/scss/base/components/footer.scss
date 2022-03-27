@@ -1,0 +1,13 @@
+.footerwrapper{
+    border-top: 1px solid black;
+    margin-bottom: 5%;
+    .footercontainer{
+      display: flex;
+      justify-content: space-between;
+    }
+    .copyright{
+        position: relative;
+        left: 40%;
+        top: 200%;
+    }
+}

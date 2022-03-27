@@ -1,0 +1,9 @@
+{
+    "Date":"날짜",
+    "Opening":"시작가",
+    "Closing":"종료가",
+    "Deposit":"입금",
+    "Withdrawal":"출금",
+    "PNL":"손익",
+    "ROR":"수익률"
+}
