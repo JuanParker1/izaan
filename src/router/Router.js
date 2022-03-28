@@ -63,7 +63,7 @@ const Router = () => {
    */
   const FinalRoute = props => {
     const route = props.route
-
+    
     if (!jwt.getToken() && route.meta.authRoute) {
       /**
        ** If user is not Logged in & route meta is undefined

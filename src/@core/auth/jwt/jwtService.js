@@ -44,9 +44,8 @@ export default class JwtService {
 
         // ** if (status === 401) {
         const data = JSON.parse(localStorage.getItem('userData'))
-        const date = moment(data.accessTokenExpiresIn)
-        const now = moment()
-
+        const date = moment(data.accessTokenExpiresIn).format('HH:mm:ss')
+        const now = moment().format('HH:mm:ss')
         if (error && date < now) {
           if (!this.isAlreadyFetchingAccessToken) {
             this.isAlreadyFetchingAccessToken = true
