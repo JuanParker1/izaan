@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Col, Card, Tooltip } from 'reactstrap'
-import { kFormatter } from '../../utility/Utils'
-
+import {  useSelector } from 'react-redux'
+import { Prefix } from '../../utility/Utils'
 const NetBalance = ({ pnl, ror }) => {
+    const currency = useSelector(state => state.dashboard.selectedCurrency)
     const [toolTip, setToolTip] = useState(false)
 
     const toggle = () => {
@@ -16,7 +17,7 @@ const NetBalance = ({ pnl, ror }) => {
                     <p className='h'>Cumulative Revenue</p>
                     <div className='d-flex justify-content-between' style={{ marginTop: '30px' }}>
                         <p className='d'>PNL</p>
-                        <p className='values' id="pnl">{kFormatter(pnl)}</p>
+                        <p className='values' id="pnl">{Prefix(currency, pnl)}</p>
                     </div>
                     <div className='d-flex justify-content-between'>
                         <p className='d'>ROR</p>

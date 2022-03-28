@@ -28,7 +28,69 @@ export const kFormatter6 = (num) => {
     return num
   }
 }
+export const Prefix = (currency, val) => {
+ 
+  const absolute_val = Math.abs(val)
+  if (currency === 'BTC') {
+    if (absolute_val < 100) {
+      return `${(val / 1).toFixed(8)}`
+    } else {
+      return `${(val / 1).toFixed(4)}`
+    }
+  } else {
+    if (absolute_val < 10) {
+      return `${(val / 1).toFixed(2)}`
+    } else if (absolute_val > 999 && absolute_val < 1000000) {
+      return `${(val / 1000).toString().substring(0, 5)}K`
+    } else if (absolute_val > 999999 && absolute_val < 10000000) {
+      return `${(val / 1000).toFixed(0)}K`
+    } else if (absolute_val > 9999999 && absolute_val < 10000000000) {
+      return `${(val / 1000000).toString().substring(0, 5)}M`
+    } else if (absolute_val > 999999999) {
+      return `${(val / 1000000).toFixed(0)}M`
+    } else if (absolute_val.toString().replace('.', '').length > 4) {
+      if (absolute_val.toString().includes(".")) {
+        return `${val.toString().substring(0, 6)}`
+      }
+      return `${val.toString().substring(0, 5)}`
+    } else {
+      return `${val}`
+    }
+  }
+ }
 
+ //custom formatter based on currency for closing balance
+ export const cbFormatter = (num) => {
+  const currency = useSelector(state => state.dashboard.selectedCurrency)
+  console.log(num)
+  const absNum = Math.abs(num)
+  if (currency === 'BTC') {
+    if (absNum < 100) {
+      return `${(num / 1).toFixed(8)}`
+    } else {
+      return `${(num / 1).toFixed(4)}`
+    }
+  } else {
+    if (absNum < 10) {
+      return `${(num / 1).toFixed(2)}`
+    } else if (absNum > 999 && absNum < 1000000) {
+      return `${(num / 1000).toString().substring(0, 5)}K`
+    } else if (absNum > 999999 && absNum < 10000000) {
+      return `${(num / 1000).toFixed(0)}K`
+    } else if (absNum > 9999999 && absNum < 10000000000) {
+      return `${(num / 1000000).toString().substring(0, 5)}M`
+    } else if (absNum > 999999999) {
+      return `${(num / 1000000).toFixed(0)}M`
+    } else if (absNum.toString().replace('.', '').length > 4) {
+      if (absNum.toString().includes(".")) {
+        return `${num.toString().substring(0, 5)}`
+      }
+      return `${num.toString().substring(0, 4)}`
+    } else {
+      return `${num}`
+    }
+  }
+ }
 // ** Converts HTML to string
 export const htmlToString = html => html.replace(/<\/?[^>]+(>|$)/g, '')
 
